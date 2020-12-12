@@ -12,7 +12,8 @@
 
 #define NUMERO_MESA 1
 
-#define TAMANHO_LISTA 5 
+#define TAMANHO_LISTA 5
+#define TAMANHO_LISTA_EXIBICAO 100
 #define TAMANHO_FRASE 19
 
 #define TOTAL_MESAS 2
@@ -24,7 +25,7 @@ char lista[TAMANHO_LISTA][TAMANHO_FRASE] = {
     "Cochinha",
     "Pastel"};
 
-char lista_esxibicao[100][TAMANHO_FRASE];
+char lista_esxibicao[TAMANHO_LISTA_EXIBICAO][TAMANHO_FRASE];
 //objeto LCD
 LiquidCrystal_I2C lcd(0x27, NUMERO_COLUNAS, NUMERO_LINHAS);
 
@@ -33,11 +34,11 @@ PushButton subir;
 PushButton descer;
 PushButton enviar;
 
-typedef struct struct_message {
-  int id;
-  int x;
-  int y;
-}struct_message;
+typedef struct struct_message
+{
+    int mesa;
+    int pedido;
+} struct_message;
 
 // Create a struct_message called myData
 struct_message myData;
@@ -47,5 +48,10 @@ struct_message board2;
 struct_message board3;
 
 struct_message boardsStruct[3] = {board1, board2, board3};
+
+int valor_atual = 0;
+
+bool atualizarTela = false;
+int pedidoAtual = 0;
 
 #endif

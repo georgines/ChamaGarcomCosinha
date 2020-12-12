@@ -2,7 +2,7 @@
 #define BUTTOES_H
 #include "configuracoes.h"
 #include "display.h"
-int valor_atual = 0;
+
 
 void somClique()
 {
@@ -13,24 +13,18 @@ void somClique()
 
 void subirLista(byte estado)
 {
-    valor_atual++;
-    valor_atual = escreverLista(valor_atual);
-    DBG_LN("subir lista");
-    somClique();
 }
 
 void descerLista(byte estado)
 {
-    valor_atual--;
-    valor_atual = escreverLista(valor_atual);
-    DBG_LN("descer lista");
-    somClique();
+    
+ 
 }
 
-void enviarSelecionado(byte estado)
+void atendePedido(byte estado)
 {
-    DBG_LN("enviar selecionado");
-    somClique();
+    valor_atual++;
+    valor_atual = escreverLista(valor_atual);
 }
 
 void iniciarBotoes()
@@ -45,7 +39,7 @@ void iniciarBotoes()
     descer.registerAction(descerLista);
 
     enviar.begin(27, INPUT_PULLUP);
-    enviar.registerAction(enviarSelecionado);
+    enviar.registerAction(atendePedido);
 }
 
 void lerTodosOsBotoes()
