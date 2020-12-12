@@ -1,9 +1,15 @@
-#include <Arduino.h>
+#include "configuracoes.h"
+#include "display.h"
+#include "botoes.h"
 
-void setup() {
-  // put your setup code here, to run once:
+void setup()
+{
+  Serial.begin(115200);
+  iniciarDisplay();
+  iniciarBotoes();
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
+void loop()
+{
+  lerTodosOsBotoes();
 }

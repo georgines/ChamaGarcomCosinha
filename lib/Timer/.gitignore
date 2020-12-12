@@ -1,0 +1,9 @@
+sloeber.ino.cpp
+.settings/
+core/
+libraries/
+Release/
+.cproject
+.project
+*.d
+.idea/
