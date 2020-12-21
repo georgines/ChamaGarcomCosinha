@@ -2,8 +2,6 @@
 #include "display.h"
 #include "botoes.h"
 
-
-
 void OnDataRecv(const uint8_t *mac_addr, const uint8_t *dadosRecebidos, int len)
 {
 
@@ -13,8 +11,11 @@ void OnDataRecv(const uint8_t *mac_addr, const uint8_t *dadosRecebidos, int len)
 
   Serial.printf("%s", lista_esxibicao[pedidoAtual]);
   Serial.println();
+
   atualizarTela = true;
+
   pedidoAtual++;
+
   if (pedidoAtual >= TAMANHO_LISTA_EXIBICAO)
   {
     pedidoAtual = 0;
@@ -25,8 +26,14 @@ void OnDataRecv(const uint8_t *mac_addr, const uint8_t *dadosRecebidos, int len)
 
 void setup()
 {
+
   Serial.begin(115200);
   Serial.setTimeout(10);
+
+  for (int i = 0; i < TAMANHO_LISTA_EXIBICAO; i++)
+  {
+    memset(lista_esxibicao[i], 0, sizeof(lista_esxibicao[i]));
+  }
 
   Serial.print("MAC ADDRES: ");
   Serial.println(WiFi.macAddress());
@@ -42,13 +49,17 @@ void setup()
   esp_now_register_recv_cb(OnDataRecv);
 
   iniciarDisplay();
+
   atualizarTela = true;
+
   iniciarBotoes();
 }
 
 void loop()
 {
+
   lerTodosOsBotoes();
+
   if (atualizarTela)
   {
     escreverLista(valor_atual);
