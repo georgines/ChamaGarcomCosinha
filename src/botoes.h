@@ -3,7 +3,6 @@
 #include "configuracoes.h"
 #include "display.h"
 
-
 void somClique()
 {
     digitalWrite(4, HIGH);
@@ -17,14 +16,16 @@ void subirLista(byte estado)
 
 void descerLista(byte estado)
 {
-    
- 
 }
 
 void atendePedido(byte estado)
 {
-    valor_atual++;
-    valor_atual = escreverLista(valor_atual);
+    if (lista_esxibicao[valor_atual][0] != 0)
+    {
+        valor_atual++;
+        valor_atual = escreverLista(valor_atual);       
+    }
+    
 }
 
 void iniciarBotoes()
