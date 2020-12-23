@@ -2,24 +2,24 @@
 #include "display.h"
 #include "botoes.h"
 
-void OnDataRecv(const uint8_t *mac_addr, const uint8_t *dadosRecebidos, int len)
+void quandoDadosRecebidos(const uint8_t *mac_addr, const uint8_t *dadosRecebidos, int len)
 {
 
-  memcpy(&myData, dadosRecebidos, sizeof(myData));
+  memcpy(&Dados, dadosRecebidos, sizeof(Dados));
 
-  sniprintf(lista_esxibicao[pedidoAtual], TAMANHO_FRASE, "M%d - %s", myData.mesa, lista[myData.pedido]);
+  sniprintf(lista_esxibicao[indiceAtualPedido], TAMANHO_FRASE, "M%d - %s", Dados.mesa, lista[Dados.pedido]);
 
-  Serial.printf("%s", lista_esxibicao[pedidoAtual]);
+  Serial.printf("%s", lista_esxibicao[indiceAtualPedido]);
   Serial.println();
 
   atualizarTela = true;
 
-  pedidoAtual++;
+  indiceAtualPedido++;
 
-  if (pedidoAtual >= TAMANHO_LISTA_EXIBICAO)
+  if (indiceAtualPedido >= TAMANHO_LISTA_EXIBICAO)
   {
-    pedidoAtual = 0;
-  }
+    indiceAtualPedido = 0;
+  } 
 
   somClique();
 }
@@ -42,11 +42,11 @@ void setup()
 
   if (esp_now_init() != ESP_OK)
   {
-    Serial.println("Error initializing ESP-NOW");
+    Serial.println("Erro ao inicializar o ESPNOW");
     return;
   }
 
-  esp_now_register_recv_cb(OnDataRecv);
+  esp_now_register_recv_cb(quandoDadosRecebidos);
 
   iniciarDisplay();
 
@@ -62,7 +62,7 @@ void loop()
 
   if (atualizarTela)
   {
-    escreverLista(valor_atual);
+    escreverLista(indiceAtualListaExibicao);
     atualizarTela = false;
   }
 }

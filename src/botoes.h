@@ -20,12 +20,11 @@ void descerLista(byte estado)
 
 void atendePedido(byte estado)
 {
-    if (lista_esxibicao[valor_atual][0] != 0)
+    if (lista_esxibicao[indiceAtualListaExibicao][0] != 0)
     {
-        valor_atual++;
-        valor_atual = escreverLista(valor_atual);       
+        indiceAtualListaExibicao++;
+        indiceAtualListaExibicao = escreverLista(indiceAtualListaExibicao);
     }
-    
 }
 
 void iniciarBotoes()
@@ -39,15 +38,15 @@ void iniciarBotoes()
     descer.begin(25, INPUT_PULLUP);
     descer.registerAction(descerLista);
 
-    enviar.begin(27, INPUT_PULLUP);
-    enviar.registerAction(atendePedido);
+    atender.begin(27, INPUT_PULLUP);
+    atender.registerAction(atendePedido);
 }
 
 void lerTodosOsBotoes()
 {
     subir.read();
     descer.read();
-    enviar.read();
+    atender.read();
 }
 
 #endif

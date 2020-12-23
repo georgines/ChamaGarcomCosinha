@@ -32,7 +32,7 @@ LiquidCrystal_I2C lcd(0x27, NUMERO_COLUNAS, NUMERO_LINHAS);
 //bojetos botoes
 PushButton subir;
 PushButton descer;
-PushButton enviar;
+PushButton atender;
 
 typedef struct struct_message
 {
@@ -40,18 +40,11 @@ typedef struct struct_message
     int pedido;
 } struct_message;
 
-// Create a struct_message called myData
-struct_message myData;
+struct_message Dados;
 
-struct_message board1;
-struct_message board2;
-struct_message board3;
-
-struct_message boardsStruct[3] = {board1, board2, board3};
-
-int valor_atual = 0;
+int indiceAtualListaExibicao = 0;
 
 bool atualizarTela = false;
-int pedidoAtual = 0;
+int indiceAtualPedido = 0;
 
 #endif
