@@ -20,10 +20,10 @@ void descerLista(byte estado)
 
 void atendePedido(byte estado)
 {
-    if (lista_esxibicao[indiceAtualListaExibicao][0] != 0)
+    if (lista_atendimento[indiceAtendimento][0] != 0)
     {
-        indiceAtualListaExibicao++;
-        indiceAtualListaExibicao = escreverLista(indiceAtualListaExibicao);
+        indiceAtendimento++;
+        indiceAtendimento = imprimirLista(indiceAtendimento);
     }
 }
 

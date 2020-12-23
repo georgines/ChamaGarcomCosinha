@@ -25,7 +25,7 @@ char lista[TAMANHO_LISTA][TAMANHO_FRASE] = {
     "Cochinha",
     "Pastel"};
 
-char lista_esxibicao[TAMANHO_LISTA_EXIBICAO][TAMANHO_FRASE];
+char lista_atendimento[TAMANHO_LISTA_EXIBICAO][TAMANHO_FRASE];
 //objeto LCD
 LiquidCrystal_I2C lcd(0x27, NUMERO_COLUNAS, NUMERO_LINHAS);
 
@@ -42,9 +42,9 @@ typedef struct struct_message
 
 struct_message Dados;
 
-int indiceAtualListaExibicao = 0;
+int indiceAtendimento = 0;
 
 bool atualizarTela = false;
-int indiceAtualPedido = 0;
+int indiceRecebimento = 0;
 
 #endif

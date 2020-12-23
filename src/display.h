@@ -43,7 +43,7 @@ void escrever(char palavra[], int linha)
     DBG_LN(palavra);
 }
 
-int escreverLista(int indice)
+int imprimirLista(int indice)
 {
     int indice2;
 
@@ -60,12 +60,12 @@ int escreverLista(int indice)
 
     setarCaractereSeletor();
     mostrarMenu();
-    escrever(lista_esxibicao[indice], 0);
+    escrever(lista_atendimento[indice], 0);
     
 
     if (indice2 < TAMANHO_LISTA_EXIBICAO)
     {
-        escrever(lista_esxibicao[indice2], 1);
+        escrever(lista_atendimento[indice2], 1);
     }
     return indice;
 }

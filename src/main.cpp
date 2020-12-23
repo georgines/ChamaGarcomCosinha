@@ -7,18 +7,18 @@ void quandoDadosRecebidos(const uint8_t *mac_addr, const uint8_t *dadosRecebidos
 
   memcpy(&Dados, dadosRecebidos, sizeof(Dados));
 
-  sniprintf(lista_esxibicao[indiceAtualPedido], TAMANHO_FRASE, "M%d - %s", Dados.mesa, lista[Dados.pedido]);
+  sniprintf(lista_atendimento[indiceRecebimento], TAMANHO_FRASE, "M%d - %s", Dados.mesa, lista[Dados.pedido]);
 
-  Serial.printf("%s", lista_esxibicao[indiceAtualPedido]);
+  Serial.printf("%s", lista_atendimento[indiceRecebimento]);
   Serial.println();
 
   atualizarTela = true;
 
-  indiceAtualPedido++;
+  indiceRecebimento++;
 
-  if (indiceAtualPedido >= TAMANHO_LISTA_EXIBICAO)
+  if (indiceRecebimento >= TAMANHO_LISTA_EXIBICAO)
   {
-    indiceAtualPedido = 0;
+    indiceRecebimento = 0;
   } 
 
   somClique();
@@ -32,7 +32,7 @@ void setup()
 
   for (int i = 0; i < TAMANHO_LISTA_EXIBICAO; i++)
   {
-    memset(lista_esxibicao[i], 0, sizeof(lista_esxibicao[i]));
+    memset(lista_atendimento[i], 0, sizeof(lista_atendimento[i]));
   }
 
   Serial.print("MAC ADDRES: ");
@@ -62,7 +62,7 @@ void loop()
 
   if (atualizarTela)
   {
-    escreverLista(indiceAtualListaExibicao);
+    imprimirLista(indiceAtendimento);
     atualizarTela = false;
   }
 }
