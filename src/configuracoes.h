@@ -42,9 +42,9 @@ typedef struct struct_message
 
 struct_message Dados;
 
-int indiceAtendimento = 0;
+int indice_atendimento = 0;
 
 bool atualizarTela = false;
-int indiceRecebimento = 0;
+int indice_recebimento = 0;
 
 #endif

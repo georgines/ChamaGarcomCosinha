@@ -7,18 +7,18 @@ void quandoDadosRecebidos(const uint8_t *mac_addr, const uint8_t *dadosRecebidos
 
   memcpy(&Dados, dadosRecebidos, sizeof(Dados));
 
-  sniprintf(lista_atendimento[indiceRecebimento], TAMANHO_FRASE, "M%d - %s", Dados.mesa, lista[Dados.pedido]);
+  sniprintf(lista_atendimento[indice_recebimento], TAMANHO_FRASE, "M%d - %s", Dados.mesa, lista[Dados.pedido]);
 
-  Serial.printf("%s", lista_atendimento[indiceRecebimento]);
+  Serial.printf("%s", lista_atendimento[indice_recebimento]);
   Serial.println();
 
   atualizarTela = true;
 
-  indiceRecebimento++;
+  indice_recebimento++;
 
-  if (indiceRecebimento >= TAMANHO_LISTA_EXIBICAO)
+  if (indice_recebimento >= TAMANHO_LISTA_EXIBICAO)
   {
-    indiceRecebimento = 0;
+    indice_recebimento = 0;
   } 
 
   somClique();
@@ -62,7 +62,7 @@ void loop()
 
   if (atualizarTela)
   {
-    imprimirLista(indiceAtendimento);
+    imprimirLista(indice_atendimento);
     atualizarTela = false;
   }
 }
